@@ -45,7 +45,7 @@ public class Loading : MonoBehaviour
             GameObject[] g = sc.GetRootGameObjects();
             for (int i = 0; i < g.Length; i++)
             {
-                if (!g[i].CompareTag("Player") && !g[i].CompareTag("Loading") && !g[i].CompareTag("Timer")) Destroy(g[i]);
+                if (!g[i].CompareTag("Player") && !g[i].CompareTag("Loading")) Destroy(g[i]);
             }
             UnityEditor.EditorUtility.UnloadUnusedAssetsImmediate();
             StartCoroutine(StartLoading(scene));
