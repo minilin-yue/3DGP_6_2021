@@ -9615,7 +9615,7 @@ MonoBehaviour:
   portal_2: {fileID: 1602245539}
   portal_3: {fileID: 127720171}
   portal_4: {fileID: 1938827833}
-  debugMode: 0
+  debugMode: 1
 --- !u!4 &1232428790
 Transform:
   m_ObjectHideFlags: 0

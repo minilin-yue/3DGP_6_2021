@@ -53,6 +53,7 @@ public class GM_memoryDoor : MonoBehaviour
         {
             cngPortal = cngPortal1;
             cngPortal.sceneName = "level1";
+            isSet = true;
             chapter = Chapter.level_1;
         }
 
