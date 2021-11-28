@@ -8565,7 +8565,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chapter: 0
-  caption: {fileID: 0}
   portal_1: {fileID: 1868154555}
   portal_2: {fileID: 1602245539}
   portal_3: {fileID: 127720171}
