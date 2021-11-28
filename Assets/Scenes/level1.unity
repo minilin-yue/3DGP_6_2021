@@ -1692,7 +1692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  rand: 0
+  rand: 100
 --- !u!65 &1940688484
 BoxCollider:
   m_ObjectHideFlags: 0

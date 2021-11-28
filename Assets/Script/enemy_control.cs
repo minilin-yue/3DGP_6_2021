@@ -33,7 +33,7 @@ public class enemy_control : MonoBehaviour
             step = 0;
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
-        rg.velocity = this.transform.forward * 20 * Time.deltaTime;
+        rg.velocity = (this.transform.forward)* 50 * Time.deltaTime;
         step++;
     }
 }
