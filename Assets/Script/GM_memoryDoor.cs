@@ -23,6 +23,10 @@ public class GM_memoryDoor : MonoBehaviour
 
     private SaveData.memoryState ms;
     private ChangeScene cngPortal;
+    private ChangeScene cngPortal1;
+    private ChangeScene cngPortal2;
+    private ChangeScene cngPortal3;
+    private ChangeScene cngPortal4;
     private bool isSet = false;
     private bool isPlaying = false;
     private bool story = false;
@@ -36,10 +40,10 @@ public class GM_memoryDoor : MonoBehaviour
             else chapter = ms.chapter;
             Debug.Log(chapter);
         }
-        cngPortal = portal_1.transform.GetChild(3).GetComponent<ChangeScene>();
-        cngPortal = portal_2.transform.GetChild(3).GetComponent<ChangeScene>();
-        cngPortal = portal_3.transform.GetChild(3).GetComponent<ChangeScene>();
-        cngPortal = portal_4.transform.GetChild(3).GetComponent<ChangeScene>();
+        cngPortal1 = portal_1.transform.GetChild(3).GetComponent<ChangeScene>();
+        cngPortal2 = portal_2.transform.GetChild(3).GetComponent<ChangeScene>();
+        cngPortal3 = portal_3.transform.GetChild(3).GetComponent<ChangeScene>();
+        cngPortal4 = portal_4.transform.GetChild(3).GetComponent<ChangeScene>();
     }
 
     // Update is called once per frame
@@ -47,26 +51,29 @@ public class GM_memoryDoor : MonoBehaviour
     {
         if (!isSet && chapter == Chapter.unStart)
         {
-            cngPortal.sceneName = "m001";
-            isSet = true;
+            cngPortal = cngPortal1;
+            cngPortal.sceneName = "level1";
             chapter = Chapter.level_1;
         }
 
         if (!isSet && chapter == Chapter.level_1)
         {
-            cngPortal.sceneName = "m002";
+            cngPortal = cngPortal2;
+            cngPortal.sceneName = "level2";
             isSet = true;
             chapter = Chapter.level_2;
         }
         if (!isSet && chapter == Chapter.level_2)
         {
-            cngPortal.sceneName = "m003";
+            cngPortal = cngPortal3;
+            cngPortal.sceneName = "level3";
             isSet = true;
             chapter = Chapter.level_3;
         }
         if (!isSet && chapter == Chapter.level_3)
         {
-            cngPortal.sceneName = "m004";
+            cngPortal = cngPortal4;
+            cngPortal.sceneName = "level4";
             isSet = true;
             chapter = Chapter.level_4;
         }
@@ -77,6 +84,7 @@ public class GM_memoryDoor : MonoBehaviour
         }
         if (!isSet && chapter == Chapter.finish)
         {
+            isSet = true;
             chapter = Chapter.unStart;
         }
 
