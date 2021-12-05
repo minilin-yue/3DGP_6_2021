@@ -205,6 +205,95 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 40e61747f5ab72d409498dd1603b8289, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d90c349721b4e694fad80a76d87b2578, type: 3}
+--- !u!1001 &40128851
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2303923885324801032, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 67.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202037301498894919, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834001798167003389, guid: dfd7fecac352e354ca7cf0c203b8aaa6,
+        type: 3}
+      propertyPath: m_Name
+      value: KatzenAnimSlingshot
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dfd7fecac352e354ca7cf0c203b8aaa6, type: 3}
 --- !u!1001 &48639160
 PrefabInstance:
   m_ObjectHideFlags: 0
