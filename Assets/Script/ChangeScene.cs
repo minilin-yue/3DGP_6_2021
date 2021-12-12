@@ -22,6 +22,7 @@ public class ChangeScene : MonoBehaviour
     void OnTriggerEnter(Collider other)// 開始接觸瞬間會呼叫一次
     {
         //audioManager.Stop();
+        if(other.gameObject.tag == "Player")
         loading.loadScene(sceneName);
     }
 }
