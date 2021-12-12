@@ -8,7 +8,7 @@ public class enemy_control : MonoBehaviour
     Vector3 now_pos;
     public int rand;
     Rigidbody rg;
-    float speed;
+    public float speed;
     int step;
     float direction;
     public bool hit;
@@ -52,7 +52,7 @@ public class enemy_control : MonoBehaviour
         if(Vector3.Distance(player.position,this.transform.position) < Distance)
         {
             this.transform.LookAt(player.position);
-            rg.velocity = (this.transform.forward + new Vector3(0, 0, 0)) * 50 * Time.deltaTime;
+            rg.velocity = (this.transform.forward + new Vector3(0, 0, 0)) * speed * Time.deltaTime;
             return;
         }
         if (step == rand)
@@ -62,7 +62,7 @@ public class enemy_control : MonoBehaviour
             step = 0;
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
-        rg.velocity = (this.transform.forward + new Vector3(0, 0, 0)) * 50 * Time.deltaTime;
+        rg.velocity = (this.transform.forward + new Vector3(0, 0, 0)) * speed * Time.deltaTime;
         Debug.Log(rg.velocity);
     }
 }
