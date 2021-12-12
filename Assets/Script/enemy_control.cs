@@ -11,6 +11,10 @@ public class enemy_control : MonoBehaviour
     float speed;
     int step;
     float direction;
+    public bool hit;
+    public Transform player;
+    float Distance = 20.0f;
+    float timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +24,37 @@ public class enemy_control : MonoBehaviour
         rand = Random.Range(70, 100);
         speed = 20;
         step = 0;
+        hit = false;
+        timer = 0.5f;
     }
-
     // Update is called once per frame
     void Update()
     {
+        Vector3 velocity = Vector3.zero;
+        if (timer < 0.5f)
+        {
+            timer += Time.deltaTime;
+            return;
+        }
+        if (hit)
+        {
+            animator.SetBool("walk", false);
+            animator.SetBool("hit", true);
+            rg.velocity = Vector3.zero;
+            timer = 0;
+            hit = false;
+            return;
+        }
+
+        animator.SetBool("hit", false);
         animator.SetBool("walk", true);
+        timer = 0.5f;
+        if(Vector3.Distance(player.position,this.transform.position) < Distance)
+        {
+            this.transform.LookAt(player.position);
+            rg.velocity = (this.transform.forward + new Vector3(0, 0, 0)) * 50 * Time.deltaTime;
+            return;
+        }
         if (step == rand)
         {
             direction = Random.Range(0, 360);
@@ -33,7 +62,7 @@ public class enemy_control : MonoBehaviour
             step = 0;
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
-        rg.velocity = (this.transform.forward)* 50 * Time.deltaTime;
-        step++;
+        rg.velocity = (this.transform.forward + new Vector3(0, 0, 0)) * 50 * Time.deltaTime;
+        Debug.Log(rg.velocity);
     }
 }
