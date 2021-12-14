@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class PlayerControl : MonoBehaviour
 {
     /// <summary>
@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour
     public UnityEngine.CharacterController controller;
     [SerializeField]
     KeySetting playerKey;
+    public Camera playerCam;
 
     [Header("移動相關參數")]
     public float speed = 5;
@@ -79,8 +80,38 @@ public class PlayerControl : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-    void Update()
+    #region skill
+    //record cool down
+    List<KeyCode> coolDonwKey = new List<KeyCode>();
+
+    private void SkillInput() {
+        foreach (FoodSkill skill in playerKey.SkillKey) {
+            if (Input.GetKeyDown(skill.key)) {
+                Debug.Log("Use skill : " + skill.name);
+                //shoot
+                GameObject pre = MonoBehaviour.Instantiate(skill.pref) as GameObject;
+                pre.transform.position = playerCam.transform.position;
+                pre.GetComponent<Rigidbody>().velocity = skill.InitSpeed * playerCam.transform.forward;
+                //cool down
+                StartCoroutine(coolDown(skill.key, skill.coolDownTime));
+                //
+            }
+        }
+    }
+
+    private IEnumerator coolDown(KeyCode coolKey,float time) {
+        if (!coolDonwKey.Contains(coolKey))
+            coolDonwKey.Add(coolKey);
+        yield return new WaitForSeconds(time);
+        coolDonwKey.Remove(coolKey);
+        yield return null;
+    }
+
+    #endregion
+
+    void FixedUpdate()
     {
         Movement();
+        SkillInput();
     }
 }

@@ -7,6 +7,7 @@ public class KeySetting : ScriptableObject
 {
     public KeyCode jump = KeyCode.Space;
     public KeyCode backpack = KeyCode.E;
-    public KeyCode[] SkillKey;
+    public FoodSkill[] SkillKey;
 
 }
+
