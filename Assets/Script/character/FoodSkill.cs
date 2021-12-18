@@ -11,5 +11,6 @@ public class FoodSkill : ScriptableObject
     //public int coolDownFrame;
     public float coolDownTime;
     public float InitSpeed;
+    public float destoryTime;
     //待補...
 }

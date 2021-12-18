@@ -17,3 +17,4 @@ MonoBehaviour:
   atk: 0
   coolDownTime: 0
   InitSpeed: 30
+  destoryTime: 1

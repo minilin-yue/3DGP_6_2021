@@ -19,6 +19,11 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     KeySetting playerKey;
     public Camera playerCam;
+    [SerializeField]
+    Animator slingAni;
+    [SerializeField]
+    float shotAniLen = 1.5f;
+    private Coroutine slingShotCoro;
 
     [Header("移動相關參數")]
     public float speed = 5;
@@ -92,9 +97,16 @@ public class PlayerControl : MonoBehaviour
                 GameObject pre = MonoBehaviour.Instantiate(skill.pref) as GameObject;
                 pre.transform.position = playerCam.transform.position;
                 pre.GetComponent<Rigidbody>().velocity = skill.InitSpeed * playerCam.transform.forward;
+                pre.GetComponent<FoodInfo>().info = skill;
                 //cool down
                 StartCoroutine(coolDown(skill.key, skill.coolDownTime));
-                //
+                //sling shot animator
+                if (slingShotCoro != null) { 
+                    StopCoroutine(slingShotCoro);
+                    slingAni.SetBool("shoot", false);
+                    slingAni.Play("shot");
+                }
+                slingShotCoro = StartCoroutine(SlingShotAni());
             }
         }
     }
@@ -104,6 +116,13 @@ public class PlayerControl : MonoBehaviour
             coolDonwKey.Add(coolKey);
         yield return new WaitForSeconds(time);
         coolDonwKey.Remove(coolKey);
+        yield return null;
+    }
+
+    private IEnumerator SlingShotAni() {
+        slingAni.SetBool("shoot", true);
+        yield return new WaitForSeconds(shotAniLen);
+        slingAni.SetBool("shoot", false);
         yield return null;
     }
 
