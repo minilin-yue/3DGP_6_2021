@@ -15,17 +15,17 @@ public class SaveData : MonoBehaviour
         public Quaternion rot;
         public bool isActive;
     }
-    //[System.Serializable]
-    //public class gameState
-    //{
-    //    public GameManager.Chapter chapter = GameManager.Chapter.unStart;
-    //    public List<itemData> items = new List<itemData>();
-    //}
-    //[System.Serializable]
-    //public class bagState
-    //{
-    //    public List<Item> itemList = new List<Item>();
-    //}
+    /*[System.Serializable]
+    public class gameState
+    {
+        public GameManager.Chapter chapter = GameManager.Chapter.unStart;
+        public List<itemData> items = new List<itemData>();
+    }
+    [System.Serializable]
+    public class bagState
+    {
+        public List<Item> itemList = new List<Item>();
+    }*/
     [System.Serializable]
     public class memoryState
     {
@@ -38,6 +38,7 @@ public class SaveData : MonoBehaviour
         var byteData = Encoding.UTF8.GetBytes(serializedData);
         var filePath = Application.persistentDataPath + "/" + fileName;
         File.WriteAllBytes(filePath, byteData);
+        Debug.Log("filePath: " + filePath);
     }
 
     public static T Load<T>(string fileName)
@@ -48,6 +49,7 @@ public class SaveData : MonoBehaviour
         {
             serializedData = File.ReadAllBytes(filePath);
             Debug.Log("FileFound");
+            Debug.Log("filePath: " + filePath);
         }
         catch (System.IO.FileNotFoundException)
         {
@@ -60,6 +62,7 @@ public class SaveData : MonoBehaviour
     public static void Delete(string fileName)
     {
         var filePath = Application.persistentDataPath + "/" + fileName;
+        Debug.Log("filePath: " + filePath);
         if (File.Exists(filePath))
         {
             File.Delete(filePath);
