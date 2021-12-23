@@ -178,7 +178,6 @@ public class GM_memoryDoor : MonoBehaviour
         GUI.Label(new Rect(100, 70, 300, 50), "Please press y/n.");
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            
             Application.Quit();
             Quit = true;
             Debug.Log("Bye.");
