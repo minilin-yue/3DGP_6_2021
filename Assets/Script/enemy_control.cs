@@ -28,6 +28,7 @@ public class enemy_control : MonoBehaviour
         timer = 0.5f;
     }
     // Update is called once per frame
+    
     void Update()
     {
         Vector3 velocity = Vector3.zero;
@@ -62,7 +63,7 @@ public class enemy_control : MonoBehaviour
             step = 0;
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
-        rg.velocity = (this.transform.forward + new Vector3(0, 0, 0)) * speed * Time.deltaTime;
+        rg.velocity = (this.transform.forward + new Vector3(0, -10, 0)) * speed * Time.deltaTime;
         Debug.Log(rg.velocity);
     }
 }
