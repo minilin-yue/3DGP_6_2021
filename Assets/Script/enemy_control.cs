@@ -52,10 +52,15 @@ public class enemy_control : MonoBehaviour
         timer = 0.5f;
         if(Vector3.Distance(player.position,this.transform.position) < Distance)
         {
-            this.transform.LookAt(player.position);
-            rg.velocity = (this.transform.forward ) * speed * Time.deltaTime;
+            if(Vector3.Distance(player.position, this.transform.position)<2)
+                animator.SetBool("attack", true);
+            else
+                animator.SetBool("attack", false);
+            this.transform.LookAt(new Vector3(player.position.x,this.transform.position.y, player.position.z));
+            rg.velocity = (this.transform.forward ) * speed * Time.deltaTime ;
             return;
         }
+        animator.SetBool("attack", false);
         if (step == rand)
         {
             direction = Random.Range(0, 360);
