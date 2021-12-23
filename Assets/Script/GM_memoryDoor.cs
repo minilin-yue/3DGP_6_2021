@@ -14,14 +14,15 @@ public class GM_memoryDoor : MonoBehaviour
         finish
     }
     public Chapter chapter;
-    //public Caption caption;
+    public Caption caption;
     public GameObject portal_1;
     public GameObject portal_2;
     public GameObject portal_3;
     public GameObject portal_4;
     public bool debugMode;
-    public int windowWidth = 400;
-    public int windowHight = 150;
+    public int windowWidth = 800;
+    public int windowHight = 300;
+    public int fontsize = 30;
 
     private SaveData.memoryState ms;
     private ChangeScene cngPortal1;
@@ -35,14 +36,7 @@ public class GM_memoryDoor : MonoBehaviour
     int windowSwitch = 0;
     float alpha = 0;
     bool Quit = false;
-    void GUIAlphaColor_0_To_1()
-    {
-        if (alpha < 1)
-        {
-            alpha += Time.deltaTime;
-            GUI.color = new Color(1, 1, 1, alpha);
-        }
-    }
+
 
     // Init
     void Awake()
@@ -118,8 +112,19 @@ public class GM_memoryDoor : MonoBehaviour
 
         if (chapter == Chapter.level_1)
         {
+            if (!isPlaying)
+            {
+                story = true;
+                Narrator0();
+                //Invoke("Narrator0", 8);
+                isPlaying = true;
+            }
+            else if (!story && !caption.isPlaying)
+            {
+                portal_1.SetActive(true);
+            }
 
-            portal_1.SetActive(true);
+            
 
         }
         if (chapter == Chapter.level_2)
@@ -163,19 +168,32 @@ public class GM_memoryDoor : MonoBehaviour
         }
     }
 
+        void GUIAlphaColor_0_To_1()
+    {
+        if (alpha < 1)
+        {
+            alpha += Time.deltaTime;
+            GUI.color = new Color(1, 1, 1, alpha);
+        }
+    }
     void OnGUI()
     {
+
         if (windowSwitch == 1)
         {
             GUIAlphaColor_0_To_1();
+
             windowRect = GUI.Window(0, windowRect, QuitWindow, "Quit Window");
         }
     }
 
     void QuitWindow(int windowID)
     {
-        GUI.Label(new Rect(100, 50, 300, 30), "Are you sure you want to quit game ?");
-        GUI.Label(new Rect(100, 70, 300, 50), "Please press y/n.");
+        GUIStyle fontStyle = new GUIStyle();
+        fontStyle.fontSize = fontsize;
+        fontStyle.normal.textColor = Color.white;
+        GUI.Label(new Rect(200, 100, 600, 60), "Are you sure you want to quit game ?", fontStyle);
+        GUI.Label(new Rect(200, 160, 600, 120), "Please press y/n.", fontStyle);
         if (Input.GetKeyDown(KeyCode.Y))
         {
             Application.Quit();
@@ -190,5 +208,10 @@ public class GM_memoryDoor : MonoBehaviour
         GUI.DragWindow();
     }
 
-
+    void Narrator0()
+    {
+        Debug.Log("Narrator0");
+        caption.Play(0);
+        story = false;
+    }
 }

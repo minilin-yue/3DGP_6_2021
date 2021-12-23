@@ -66,6 +66,7 @@ public class SaveData : MonoBehaviour
         if (File.Exists(filePath))
         {
             File.Delete(filePath);
+            Debug.Log("Delete");
         }
     }
 }
