@@ -29,7 +29,7 @@ public class SaveData : MonoBehaviour
     [System.Serializable]
     public class memoryState
     {
-        public GM_memoryDoor.Chapter chapter = GM_memoryDoor.Chapter.unStart;
+        public GM_level0.Chapter chapter = GM_level0.Chapter.unStart;
     }
     
     public static void Save<T>(T data, string fileName)
