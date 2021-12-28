@@ -69,6 +69,7 @@ MonoBehaviour:
   playerCam: {fileID: 8527649344971864301}
   slingAni: {fileID: 439670224277250}
   shotAniLen: 0.63
+  N_atk: {fileID: 11400000, guid: 084c3c7a6eba648478d7e550e36492e9, type: 2}
   speed: 5
   gravity: -9.18
   jumpHeight: 3

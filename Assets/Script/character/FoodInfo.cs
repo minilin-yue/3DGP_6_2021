@@ -15,6 +15,7 @@ public class FoodInfo : MonoBehaviour
     }
 
     IEnumerator AutoDes() {
+        yield return new WaitUntil(() => (info != null));
         yield return new WaitForSeconds(info.destoryTime);
         Destroy(gameObject);
         yield return null;

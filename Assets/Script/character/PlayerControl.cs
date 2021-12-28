@@ -24,6 +24,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     float shotAniLen = 1.5f;
     private Coroutine slingShotCoro;
+    [SerializeField]
+    private FoodSkill N_atk;
 
     [Header("移動相關參數")]
     public float speed = 5;
@@ -92,7 +94,6 @@ public class PlayerControl : MonoBehaviour
     private void SkillInput() {
         foreach (FoodSkill skill in playerKey.SkillKey) {
             if (Input.GetKeyDown(skill.key)) {
-                Debug.Log("Use skill : " + skill.name);
                 //shoot
                 GameObject pre = MonoBehaviour.Instantiate(skill.pref) as GameObject;
                 pre.transform.position = playerCam.transform.position;
@@ -109,6 +110,24 @@ public class PlayerControl : MonoBehaviour
                 slingShotCoro = StartCoroutine(SlingShotAni());
             }
         }
+    }
+
+    private void NormalAtk() {
+        if (Input.GetMouseButton(0)) {
+            GameObject pre = MonoBehaviour.Instantiate(N_atk.pref) as GameObject;
+            pre.transform.position = playerCam.transform.position;
+            pre.GetComponent<Rigidbody>().velocity = N_atk.InitSpeed * playerCam.transform.forward;
+            pre.GetComponent<FoodInfo>().info = N_atk;
+            //sling shot animator
+            if (slingShotCoro != null)
+            {
+                StopCoroutine(slingShotCoro);
+                slingAni.SetBool("shoot", false);
+                slingAni.Play("shot");
+            }
+            slingShotCoro = StartCoroutine(SlingShotAni());
+        }
+    
     }
 
     private IEnumerator coolDown(KeyCode coolKey,float time) {
@@ -132,5 +151,6 @@ public class PlayerControl : MonoBehaviour
     {
         Movement();
         SkillInput();
+        NormalAtk();
     }
 }
