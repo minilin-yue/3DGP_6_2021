@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Loading
   - Bullet
+  - enemy_weapon
   layers:
   - Default
   - TransparentFX
