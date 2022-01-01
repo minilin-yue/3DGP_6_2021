@@ -18,3 +18,4 @@ MonoBehaviour:
   coolDownTime: 0
   InitSpeed: 30
   destoryTime: 1
+  hitEffect: {fileID: 1500378020736912, guid: 2547a66872ebe45408ace228820a79e1, type: 3}

@@ -16,6 +16,11 @@ public class PlayerControl : MonoBehaviour
     }
 
     public UnityEngine.CharacterController controller;
+    /// <summary>
+    /// all player current value
+    /// </summary>
+    //[HideInInspector]
+    public PlayerStatus status;
     [SerializeField]
     KeySetting playerKey;
     public Camera playerCam;
@@ -91,6 +96,7 @@ public class PlayerControl : MonoBehaviour
     //record cool down
     List<KeyCode> coolDonwKey = new List<KeyCode>();
 
+
     private void SkillInput() {
         foreach (FoodSkill skill in playerKey.SkillKey) {
             if (Input.GetKeyDown(skill.key)) {
@@ -101,6 +107,7 @@ public class PlayerControl : MonoBehaviour
                 pre.GetComponent<FoodInfo>().info = skill;
                 //cool down
                 StartCoroutine(coolDown(skill.key, skill.coolDownTime));
+                StartCoroutine(status.CoolDownSkill(GetSkillIndex(skill), skill.coolDownTime));
                 //sling shot animator
                 if (slingShotCoro != null) { 
                     StopCoroutine(slingShotCoro);
@@ -113,7 +120,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     private void NormalAtk() {
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButtonDown(0)) {
             GameObject pre = MonoBehaviour.Instantiate(N_atk.pref) as GameObject;
             pre.transform.position = playerCam.transform.position;
             pre.GetComponent<Rigidbody>().velocity = N_atk.InitSpeed * playerCam.transform.forward;
@@ -128,6 +135,15 @@ public class PlayerControl : MonoBehaviour
             slingShotCoro = StartCoroutine(SlingShotAni());
         }
     
+    }
+
+    private int GetSkillIndex(FoodSkill skill) { 
+        for(int i = 0; i < playerKey.SkillKey.Length; i++)
+        {
+            if (skill == playerKey.SkillKey[i])
+                return i;
+        }
+        return -1;
     }
 
     private IEnumerator coolDown(KeyCode coolKey,float time) {
@@ -146,6 +162,10 @@ public class PlayerControl : MonoBehaviour
     }
 
     #endregion
+    private void Start()
+    {
+        status.init(4, playerKey.SkillKey.Length);
+    }
 
     void FixedUpdate()
     {
@@ -153,4 +173,60 @@ public class PlayerControl : MonoBehaviour
         SkillInput();
         NormalAtk();
     }
+}
+
+/// <summary>
+/// 紀錄玩家的目前參數
+/// </summary>
+[System.Serializable]
+public class PlayerStatus
+{
+    public int Hp;
+    public bool canMove;
+    public List<SkillStatus> skill = new List<SkillStatus>();
+    public void init(int maxHp,int skillCount) {
+        Hp = maxHp;
+        canMove = true;
+        
+        for(int i = 0; i< skillCount; i++)
+        {
+            skill.Add(new SkillStatus());
+            skill[i].cd_remain = 0;
+        }
+    }
+
+    /// <summary>
+    /// pass remain cool down time to UI
+    /// </summary>
+    /// <param name="skillIndex"></param>
+    /// <returns></returns>
+    public float GetRemainCd(int skillIndex)
+    {
+        return skill[skillIndex].cd_remain;
+    }
+    /// <summary>
+    /// 計算冷卻時間
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="cd"></param>
+    /// <returns></returns>
+    public IEnumerator CoolDownSkill(int index, float cd) {
+        skill[index].cd_remain = cd;
+        while (skill[index].cd_remain > 0)
+        {
+            yield return new WaitForEndOfFrame();
+            skill[index].cd_remain -= Time.deltaTime;
+
+        }
+        skill[index].cd_remain = 0;
+        yield return null;
+    }
+}
+
+/// <summary>
+/// 紀錄玩家各技能目前的狀態(冷卻過幾秒、現在是否可用)
+/// </summary>
+[System.Serializable]
+public class SkillStatus {
+    public float cd_remain;
 }
