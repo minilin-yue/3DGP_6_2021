@@ -19,7 +19,7 @@ public class e_lv2 : MonoBehaviour
     void Start()
     {
         rg = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         direction = Random.Range(0, 360);
         rand = Random.Range(70, 100);
         step = 0;
@@ -48,10 +48,10 @@ public class e_lv2 : MonoBehaviour
 
         animator.SetBool("hit", false);
         animator.SetBool("walk", true);
-        timer = 0.5f;
+        timer = 0.6f;
         if (Vector3.Distance(player.position, this.transform.position) < Distance)
         {
-            this.transform.LookAt(new Vector3(player.position.x, this.transform.position.y, player.position.z));
+            this.transform.LookAt(new Vector3(transform.position.x+transform.position.x-player.position.x, this.transform.position.y, transform.position.z+transform.position.x - player.position.z));
             rg.velocity = (this.transform.forward) * speed * Time.deltaTime;
             return;
         }
