@@ -13,6 +13,7 @@ public class lv2_move : MonoBehaviour
     public Transform player;
     float Distance = 15.0f;
     float timer;
+    public e_lv2 e_Lv2;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,11 @@ public class lv2_move : MonoBehaviour
 
     void Update()
     {
-        Vector3 velocity = Vector3.zero;
+        if (!e_Lv2.run)
+        {
+            rg.velocity = Vector3.zero;
+            return;
+        }
 
         timer = 0.6f;
         if (Vector3.Distance(player.position, this.transform.position) < Distance)
@@ -43,7 +48,7 @@ public class lv2_move : MonoBehaviour
             step = 0;
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
-        rg.velocity = (this.transform.forward + Vector3.down) * speed ;
+        rg.velocity = (this.transform.forward + Vector3.down) * speed;
         Debug.Log(rg.velocity);
     }
 }

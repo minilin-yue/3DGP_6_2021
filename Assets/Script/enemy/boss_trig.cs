@@ -12,5 +12,10 @@ public class boss_trig : MonoBehaviour
             boss.hit = true;
             Destroy(other.gameObject);
         }
+        if (other.CompareTag("food_bullet"))
+        {
+            boss.diz = true;
+            Destroy(other.gameObject);
+        }
     }
 }

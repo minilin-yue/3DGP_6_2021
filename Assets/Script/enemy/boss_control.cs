@@ -12,6 +12,8 @@ public class boss_control : MonoBehaviour
     float direction;
     public bool hit;
     float timer;
+    public bool diz = false;
+    float counter = 0.5f;
     // Start is called before the first frame update
     void Start()
     {

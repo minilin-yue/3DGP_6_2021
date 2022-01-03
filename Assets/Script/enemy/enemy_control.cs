@@ -15,6 +15,8 @@ public class enemy_control : MonoBehaviour
     public Transform player;
     float Distance = 15.0f;
     float timer;
+    public bool diz = false;
+    float counter = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,6 @@ public class enemy_control : MonoBehaviour
         animator = GetComponent<Animator>();
         direction = Random.Range(0, 360);
         rand = Random.Range(70, 100);
-        speed = 20;
         step = 0;
         hit = false;
         timer = 0.5f;
@@ -31,10 +32,19 @@ public class enemy_control : MonoBehaviour
     
     void Update()
     {
-        Vector3 velocity = Vector3.zero;
-        if (timer < 0.5f)
+        if (timer < counter)
         {
             timer += Time.deltaTime;
+            return;
+        }
+        if (diz)
+        {
+            animator.SetBool("walk", false);
+            animator.SetBool("diz", true);
+            rg.velocity = Vector3.zero;
+            timer = 0;
+            diz = false;
+            counter = 5;
             return;
         }
         if (hit)
@@ -44,20 +54,22 @@ public class enemy_control : MonoBehaviour
             rg.velocity = Vector3.zero;
             timer = 0;
             hit = false;
+            counter = 0.5f;
             return;
         }
 
+        animator.SetBool("diz", false);
         animator.SetBool("hit", false);
         animator.SetBool("walk", true);
-        timer = 0.5f;
+        timer = counter;
         if(Vector3.Distance(player.position,this.transform.position) < Distance)
         {
-            if(Vector3.Distance(player.position, this.transform.position)<2)
+            if(Vector3.Distance(player.position, this.transform.position)<3)
                 animator.SetBool("attack", true);
             else
                 animator.SetBool("attack", false);
             this.transform.LookAt(new Vector3(player.position.x,this.transform.position.y, player.position.z));
-            rg.velocity = (this.transform.forward ) * speed * Time.deltaTime ;
+            rg.velocity = (this.transform.forward +Vector3.down) * speed * Time.deltaTime ;
             return;
         }
         animator.SetBool("attack", false);
@@ -68,7 +80,7 @@ public class enemy_control : MonoBehaviour
             step = 0;
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
-        rg.velocity = (this.transform.forward ) * speed * Time.deltaTime;
+        rg.velocity = (this.transform.forward + Vector3.down) * speed * Time.deltaTime;
         Debug.Log(rg.velocity);
     }
 }

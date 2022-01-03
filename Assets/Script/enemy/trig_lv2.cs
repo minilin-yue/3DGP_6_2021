@@ -13,5 +13,10 @@ public class trig_lv2 : MonoBehaviour
             enemy.hit = true;
             Destroy(other.gameObject);
         }
+        if (other.CompareTag("food_bullet"))
+        {
+            enemy.diz = true;
+            Destroy(other.gameObject);
+        }
     }
 }
