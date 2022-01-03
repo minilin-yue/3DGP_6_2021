@@ -11,7 +11,6 @@ public class boss_control : MonoBehaviour
     int step;
     float direction;
     public bool hit;
-    public Transform player;
     float timer;
     // Start is called before the first frame update
     void Start()
@@ -56,6 +55,5 @@ public class boss_control : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
         rg.velocity = (this.transform.forward+Vector3.down) * speed;
-        Debug.Log(rg.velocity);
     }
 }
