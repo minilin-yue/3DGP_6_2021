@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 public class PlayerControl : MonoBehaviour
 {
     /// <summary>
@@ -31,7 +32,13 @@ public class PlayerControl : MonoBehaviour
     private Coroutine slingShotCoro;
     [SerializeField]
     private FoodSkill N_atk;
-
+    [Header("血量")]
+    public float blood = 5;
+    public GameObject blood1;
+    public GameObject blood2;
+    public GameObject blood3;
+    public GameObject blood4;
+    public GameObject blood5;
     [Header("移動相關參數")]
     public float speed = 5;
 
@@ -172,6 +179,60 @@ public class PlayerControl : MonoBehaviour
         Movement();
         SkillInput();
         NormalAtk();
+
+        //UI玩家血量//我先歲便寫，這邊可改的美一點XD 像是血量有動的時候再做判斷
+        if(blood==5)
+        {
+            blood1.SetActive(true);
+            blood2.SetActive(true);
+            blood3.SetActive(true);
+            blood4.SetActive(true);
+            blood5.SetActive(true);
+        }
+        else if(blood == 4)
+        {
+            blood1.SetActive(true);
+            blood2.SetActive(true);
+            blood3.SetActive(true);
+            blood4.SetActive(true);
+            blood5.SetActive(false);
+        }
+        else if (blood == 3)
+        {
+            blood1.SetActive(true);
+            blood2.SetActive(true);
+            blood3.SetActive(true);
+            blood4.SetActive(false);
+            blood5.SetActive(false);
+        }
+        else if (blood == 2)
+        {
+            blood1.SetActive(true);
+            blood2.SetActive(true);
+            blood3.SetActive(false);
+            blood4.SetActive(false);
+            blood5.SetActive(false);
+        }
+        else if (blood == 1)
+        {
+            blood1.SetActive(true);
+            blood2.SetActive(false);
+            blood3.SetActive(false);
+            blood4.SetActive(false);
+            blood5.SetActive(false);
+        }
+        else if (blood == 0)
+        {
+            blood1.SetActive(false);
+            blood2.SetActive(false);
+            blood3.SetActive(false);
+            blood4.SetActive(false);
+            blood5.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("blood(Player)非0~5");
+        }
     }
 }
 

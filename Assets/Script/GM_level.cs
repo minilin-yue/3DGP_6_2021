@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GM_level : MonoBehaviour
 {
@@ -10,27 +11,39 @@ public class GM_level : MonoBehaviour
         level,
         finish
     }
+    public Text mission;
+    public Text txt_point1;
+    public Text txt_point2;
+    public Text txt_point3;
+    public Text txt_point4;
+    public Text txt_num1;
+    public Text txt_num2;
+    public Text txt_num3;
+    public Text txt_num4;
+
     public Chapter chapter;
     public Caption caption;
     public GameObject portal_0;
     public bool debugMode;
-    [Header("任務要求食物量")]
-    public int min_pfood = 300;
-    public int max_sfood = 100;
-    public int max_sfood1 = 100;
-    public int max_sfood2 = 100;
-    public int max_sfood3 = 100;
-    public int max_sfood4 = 100;
-    [Header("場景裡食物量")]
-    public int sfood1 = 100;
-    public int sfood2 = 100;
-    public int sfood3 = 100;
-    public int sfood4 = 100;
+    [Header("任務過關積分")]
+    public int min_point = 300;
+    [Header("玩家目前積分")]
+    public int p_point = 0;
+    [Header("場景裡食物量(請填0，會自動加總)")]
+    public int sfood1 = 0;
+    public int sfood2 = 0;
+    public int sfood3 = 0;
+    public int sfood4 = 0;
     [Header("玩家食物量")]
     public int pfood1 = 0;
     public int pfood2 = 0;
     public int pfood3 = 0;
     public int pfood4 = 0;
+    [Header("單個食物積分")]
+    public int point1 = 0;
+    public int point2 = 0;
+    public int point3 = 0;
+    public int point4 = 0;
     [Header("GUI setting")]
     public int windowWidth = 800;
     public int windowHight = 300;
@@ -47,7 +60,7 @@ public class GM_level : MonoBehaviour
     int windowSwitch = 0;
     float alpha = 0;
     bool Quit = false;
-
+    
 
     // Init
     void Awake()
@@ -77,6 +90,28 @@ public class GM_level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        p_point = pfood1 * point1 + pfood2 * point2 + pfood3 * point3 + pfood4 * point4;
+
+        txt_point1.text = "♨" + point1.ToString();
+        txt_point2.text = "♨" + point2.ToString();
+        txt_point3.text = "♨" + point3.ToString();
+        txt_point4.text = "♨" + point4.ToString();
+
+        if (pfood1 < 100) txt_num1.text = pfood1.ToString();
+        else txt_num1.text = "99+";
+
+        if (pfood2 < 100) txt_num2.text = pfood2.ToString();
+        else txt_num2.text = "99+";
+
+        if (pfood3 < 100) txt_num3.text = pfood3.ToString();
+        else txt_num3.text = "99+";
+
+        if (pfood4 < 100) txt_num4.text = pfood4.ToString();
+        else txt_num4.text = "99+";
+
+        if (p_point < 10000) mission.text = "通關條件：♨" + min_point.ToString() + "\n目前積分：♨" + p_point.ToString();
+        else mission.text = "通關條件：♨" + min_point.ToString() + "\n目前積分：♨9999+";
+
         if (Input.GetKeyDown("escape"))
         {
             windowSwitch = 1;
@@ -105,7 +140,7 @@ public class GM_level : MonoBehaviour
                 //Invoke("Narrator0", 8);
                
             }
-            if ((sfood1 + sfood2 + sfood3 + sfood4) <= max_sfood && (pfood1 + pfood2 + pfood3 + pfood4) >= min_pfood) 
+            if (p_point >= min_point)
             {
                 isSet = false;
             }

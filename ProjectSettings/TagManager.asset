@@ -9,6 +9,7 @@ TagManager:
   - enemy_weapon
   - Fluid
   - food_bullet
+  - food
   layers:
   - Default
   - TransparentFX

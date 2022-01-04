@@ -9,7 +9,7 @@ public class Loading : MonoBehaviour
     public GameObject background;
     public GameObject percentage;
     public GameObject all;
-    public GameObject camera;
+    public GameObject mCamera;
 
     private Animation fade;
     private Text percent;
@@ -38,7 +38,7 @@ public class Loading : MonoBehaviour
         {
             isLoading = false;
             all.SetActive(true);
-            camera.SetActive(true);
+            mCamera.SetActive(true);
             AudioSource[] l = GameObject.FindObjectsOfType<AudioSource>();
             for(int i = 0; i < l.Length; i++)
             {
@@ -83,7 +83,7 @@ public class Loading : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         all.SetActive(false);
-        camera.SetActive(false);
+        mCamera.SetActive(false);
         op.allowSceneActivation = true;
         fade.Play("fadeOut");
     }
