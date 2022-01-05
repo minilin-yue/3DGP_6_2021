@@ -176,7 +176,7 @@ public class GM_level : MonoBehaviour
         }
     }
     */
-        void GUIAlphaColor_0_To_1()
+    void GUIAlphaColor_0_To_1()
     {
         if (alpha < 1)
         {

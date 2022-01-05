@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class food : MonoBehaviour
 {
-    public GM_level GameManager;
+    GM_level GameManager;
     public bool food1 = false;
     public bool food2 = false;
     public bool food3 = false;
     public bool food4 = false;
+    public bool reset = false;
     public int num = 1;
     public bool trigger = false;
     public bool pick = false;
     // Start is called before the first frame update
     void Start()
     {
-
+        GameManager = GameObject.Find("GameManager").GetComponent<GM_level>();
         if (food1)
         {
             GameManager.sfood1 += 1;
@@ -48,6 +49,11 @@ public class food : MonoBehaviour
         
         if (pick == true)
         {
+            if(reset)
+            {
+                gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.GetChild(2).GetComponent<CD_lv2food>().CD_food = true;
+            }
+
             pick = false;
             gameObject.transform.parent.gameObject.SetActive(false);
             if (food1)
