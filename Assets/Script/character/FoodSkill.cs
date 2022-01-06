@@ -13,5 +13,7 @@ public class FoodSkill : ScriptableObject
     public float InitSpeed;
     public float destoryTime;
     public GameObject hitEffect;
+    public Sprite Icon;
+    public int initCount;
     //待補...
 }

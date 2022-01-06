@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07122658b1d514d4cad43d3882647894, type: 3}
+  m_Name: UsableFoodTable
+  m_EditorClassIdentifier: 
+  Skill_Scene1:
+  - {fileID: 11400000, guid: f5ea7d977e2c2d84ab1124e02b033a60, type: 2}
+  - {fileID: 11400000, guid: ecc4247cc31249e448fbf465f1cd45f2, type: 2}
+  - {fileID: 11400000, guid: 0f906801b97ee8a478f55508cc2ac170, type: 2}
+  - {fileID: 11400000, guid: c35606d9c5ad514429c4bdd30128b585, type: 2}
+  Skill_Scene2:
+  - {fileID: 11400000, guid: f5ea7d977e2c2d84ab1124e02b033a60, type: 2}
+  - {fileID: 11400000, guid: ecc4247cc31249e448fbf465f1cd45f2, type: 2}
+  - {fileID: 11400000, guid: 0f906801b97ee8a478f55508cc2ac170, type: 2}
+  - {fileID: 11400000, guid: c35606d9c5ad514429c4bdd30128b585, type: 2}
+  Skill_Scene3:
+  - {fileID: 11400000, guid: f5ea7d977e2c2d84ab1124e02b033a60, type: 2}
+  - {fileID: 11400000, guid: ecc4247cc31249e448fbf465f1cd45f2, type: 2}
+  - {fileID: 11400000, guid: 0f906801b97ee8a478f55508cc2ac170, type: 2}
+  - {fileID: 11400000, guid: c35606d9c5ad514429c4bdd30128b585, type: 2}
+  Skill_Scene4:
+  - {fileID: 11400000, guid: f5ea7d977e2c2d84ab1124e02b033a60, type: 2}
+  - {fileID: 11400000, guid: ecc4247cc31249e448fbf465f1cd45f2, type: 2}
+  - {fileID: 11400000, guid: 0f906801b97ee8a478f55508cc2ac170, type: 2}
+  - {fileID: 11400000, guid: c35606d9c5ad514429c4bdd30128b585, type: 2}

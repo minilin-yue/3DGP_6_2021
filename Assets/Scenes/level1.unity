@@ -1187,26 +1187,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 408267448}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &434142941 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8527649343741535382, guid: 6ebdfd41403f8d747aa530049a6fe3d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 8527649343603871609}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &434142944
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 434142941}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.28, z: 0}
 --- !u!114 &434495675 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2215712063734600282, guid: b08a4224f5d51484394d36905d095b12,
@@ -4961,6 +4941,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215712062674979898, guid: b08a4224f5d51484394d36905d095b12,
+        type: 3}
+      propertyPath: ui.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2215712062674979899, guid: b08a4224f5d51484394d36905d095b12,
         type: 3}

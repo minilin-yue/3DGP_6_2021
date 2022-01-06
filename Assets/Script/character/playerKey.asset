@@ -16,3 +16,6 @@ MonoBehaviour:
   backpack: 101
   SkillKey:
   - {fileID: 11400000, guid: f5ea7d977e2c2d84ab1124e02b033a60, type: 2}
+  - {fileID: 11400000, guid: ecc4247cc31249e448fbf465f1cd45f2, type: 2}
+  - {fileID: 11400000, guid: 0f906801b97ee8a478f55508cc2ac170, type: 2}
+  - {fileID: 11400000, guid: c35606d9c5ad514429c4bdd30128b585, type: 2}

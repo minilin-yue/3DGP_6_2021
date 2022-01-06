@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8527649343741535368}
   - component: {fileID: 8527649343741535369}
   - component: {fileID: 8527649343741535371}
+  - component: {fileID: 7387224911635909788}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -65,11 +66,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 8527649343741535369}
+  status:
+    Hp: 0
+    canMove: 0
+    skill: []
   playerKey: {fileID: 11400000, guid: 44007e3726410844e92777036f64d30d, type: 2}
   playerCam: {fileID: 8527649344971864301}
   slingAni: {fileID: 439670224277250}
   shotAniLen: 0.63
   N_atk: {fileID: 11400000, guid: 084c3c7a6eba648478d7e550e36492e9, type: 2}
+  SceneFoodSetting: {fileID: 11400000, guid: 3eded6471d918e547b4f586b5891252f, type: 2}
   speed: 5
   gravity: -9.18
   jumpHeight: 3
@@ -78,6 +84,20 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!136 &7387224911635909788
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527649343741535382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.28, z: 0}
 --- !u!1 &8527649344200112072
 GameObject:
   m_ObjectHideFlags: 0

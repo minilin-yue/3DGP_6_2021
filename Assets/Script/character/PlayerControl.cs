@@ -32,13 +32,12 @@ public class PlayerControl : MonoBehaviour
     private Coroutine slingShotCoro;
     [SerializeField]
     private FoodSkill N_atk;
-    [Header("血量")]
-    public float blood = 5;
-    public GameObject blood1;
-    public GameObject blood2;
-    public GameObject blood3;
-    public GameObject blood4;
-    public GameObject blood5;
+    //[Header("血量")]
+    //public float blood = 5;
+
+    [Header("放入在各關卡可使用的技能設定")]
+    public SceneFoodTable SceneFoodSetting;
+
     [Header("移動相關參數")]
     public float speed = 5;
 
@@ -104,9 +103,45 @@ public class PlayerControl : MonoBehaviour
     List<KeyCode> coolDonwKey = new List<KeyCode>();
 
 
+    /// <summary>
+    /// 切換關卡的改技能表時候要用這個
+    /// </summary>
+    /// <param name="sceneName"></param>
+    public void ChangeSkillSet(string sceneName)
+    {
+        switch (sceneName)
+        {
+            case "level1":
+                playerKey.SkillKey = SceneFoodSetting.Skill_Scene1;
+                status.init(status.Hp, playerKey.SkillKey);
+                break;
+            case "level2":
+                playerKey.SkillKey = SceneFoodSetting.Skill_Scene2;
+                status.init(status.Hp, playerKey.SkillKey);
+                break;
+            case "level3":
+                playerKey.SkillKey = SceneFoodSetting.Skill_Scene3;
+                status.init(status.Hp, playerKey.SkillKey);
+                break;
+            case "level4":
+                playerKey.SkillKey = SceneFoodSetting.Skill_Scene4;
+                status.init(status.Hp, playerKey.SkillKey);
+                break;
+            default:
+                playerKey.SkillKey = SceneFoodSetting.Skill_Scene1;
+                status.init(status.Hp, playerKey.SkillKey);
+                break;
+        }
+
+    }
+
+
     private void SkillInput() {
-        foreach (FoodSkill skill in playerKey.SkillKey) {
-            if (Input.GetKeyDown(skill.key)) {
+        //foreach (FoodSkill skill in playerKey.SkillKey) {
+        for (int i= 0;i < playerKey.SkillKey.Length;i++)
+        {
+            FoodSkill skill = playerKey.SkillKey[i];
+            if (Input.GetKeyDown(skill.key) && !coolDonwKey.Contains(skill.key) && status.skill[i].count > 0) {
                 //shoot
                 GameObject pre = MonoBehaviour.Instantiate(skill.pref) as GameObject;
                 pre.transform.position = playerCam.transform.position;
@@ -122,6 +157,7 @@ public class PlayerControl : MonoBehaviour
                     slingAni.Play("shot");
                 }
                 slingShotCoro = StartCoroutine(SlingShotAni());
+                status.skill[i].count--;
             }
         }
     }
@@ -169,9 +205,18 @@ public class PlayerControl : MonoBehaviour
     }
 
     #endregion
+
+    #region Ui
+    public FoodSkill[] GetFoodSkills() {
+        return playerKey.SkillKey;
+    }
+
+
+    #endregion
+
     private void Start()
     {
-        status.init(4, playerKey.SkillKey.Length);
+        status.init(5, playerKey.SkillKey);
     }
 
     void FixedUpdate()
@@ -179,60 +224,6 @@ public class PlayerControl : MonoBehaviour
         Movement();
         SkillInput();
         NormalAtk();
-
-        //UI玩家血量//我先歲便寫，這邊可改的美一點XD 像是血量有動的時候再做判斷
-        if(blood==5)
-        {
-            blood1.SetActive(true);
-            blood2.SetActive(true);
-            blood3.SetActive(true);
-            blood4.SetActive(true);
-            blood5.SetActive(true);
-        }
-        else if(blood == 4)
-        {
-            blood1.SetActive(true);
-            blood2.SetActive(true);
-            blood3.SetActive(true);
-            blood4.SetActive(true);
-            blood5.SetActive(false);
-        }
-        else if (blood == 3)
-        {
-            blood1.SetActive(true);
-            blood2.SetActive(true);
-            blood3.SetActive(true);
-            blood4.SetActive(false);
-            blood5.SetActive(false);
-        }
-        else if (blood == 2)
-        {
-            blood1.SetActive(true);
-            blood2.SetActive(true);
-            blood3.SetActive(false);
-            blood4.SetActive(false);
-            blood5.SetActive(false);
-        }
-        else if (blood == 1)
-        {
-            blood1.SetActive(true);
-            blood2.SetActive(false);
-            blood3.SetActive(false);
-            blood4.SetActive(false);
-            blood5.SetActive(false);
-        }
-        else if (blood == 0)
-        {
-            blood1.SetActive(false);
-            blood2.SetActive(false);
-            blood3.SetActive(false);
-            blood4.SetActive(false);
-            blood5.SetActive(false);
-        }
-        else
-        {
-            Debug.Log("blood(Player)非0~5");
-        }
     }
 }
 
@@ -245,14 +236,15 @@ public class PlayerStatus
     public int Hp;
     public bool canMove;
     public List<SkillStatus> skill = new List<SkillStatus>();
-    public void init(int maxHp,int skillCount) {
+    public void init(int maxHp, FoodSkill[] skillTable) {
         Hp = maxHp;
         canMove = true;
         
-        for(int i = 0; i< skillCount; i++)
+        for(int i = 0; i< skillTable.Length; i++)
         {
             skill.Add(new SkillStatus());
             skill[i].cd_remain = 0;
+            skill[i].count = skillTable[i].initCount;
         }
     }
 
@@ -290,4 +282,5 @@ public class PlayerStatus
 [System.Serializable]
 public class SkillStatus {
     public float cd_remain;
+    public int count;
 }

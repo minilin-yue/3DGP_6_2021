@@ -982,7 +982,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   Hp: 0
-  cd: []
+  bloods:
+  - {fileID: 2215712063224704166}
+  - {fileID: 2215712062679821153}
+  - {fileID: 2215712063130029498}
+  - {fileID: 2215712063248519641}
+  - {fileID: 2215712063919806398}
+  ui:
+  - cd: 0
+    maxCd: 0
+    cd_layer: {fileID: 2215712061833867920}
+    food: {fileID: 2215712062666796150}
+    count: {fileID: 2215712063064058089}
+  - cd: 0
+    maxCd: 0
+    cd_layer: {fileID: 2215712063481894583}
+    food: {fileID: 2215712063594009415}
+    count: {fileID: 2215712063003727517}
+  - cd: 0
+    maxCd: 0
+    cd_layer: {fileID: 2215712063710260171}
+    food: {fileID: 2215712063600658655}
+    count: {fileID: 2215712062459116375}
+  - cd: 0
+    maxCd: 0
+    cd_layer: {fileID: 2215712062742124526}
+    food: {fileID: 2215712061851607437}
+    count: {fileID: 2215712063856167853}
 --- !u!1 &2215712062679821153
 GameObject:
   m_ObjectHideFlags: 0

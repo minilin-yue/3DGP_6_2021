@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8706d663172f1c24b93d28dcef79a8ce, type: 3}
-  m_Name: 1_berryCake
+  m_Name: 4_scene1
   m_EditorClassIdentifier: 
-  key: 49
+  key: 52
   pref: {fileID: 1906187227490682448, guid: 9a3f4c7c4f830144894c6a4b69f6f755, type: 3}
   atk: 0
-  coolDownTime: 0
+  coolDownTime: 5
   InitSpeed: 30
   destoryTime: 1
   hitEffect: {fileID: 1500378020736912, guid: 2547a66872ebe45408ace228820a79e1, type: 3}
-  Icon: {fileID: -6679491074338162037, guid: d48de04876712d244be58795d27baafb, type: 3}
+  Icon: {fileID: -6675031877438946862, guid: e7e8b5e7c3f4bb6469babacea9bcec90, type: 3}
   initCount: 20
