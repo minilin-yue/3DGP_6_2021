@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class PlayerControl : MonoBehaviour
 {
     /// <summary>
@@ -128,7 +129,7 @@ public class PlayerControl : MonoBehaviour
                 status.init(status.Hp, playerKey.SkillKey);
                 break;
             default:
-                playerKey.SkillKey = SceneFoodSetting.Skill_Scene1;
+                playerKey.SkillKey = SceneFoodSetting.Skill_Scene3;
                 status.init(status.Hp, playerKey.SkillKey);
                 break;
         }
@@ -141,7 +142,7 @@ public class PlayerControl : MonoBehaviour
         for (int i= 0;i < playerKey.SkillKey.Length;i++)
         {
             FoodSkill skill = playerKey.SkillKey[i];
-            if (Input.GetKeyDown(skill.key) && !coolDonwKey.Contains(skill.key) && status.skill[i].count > 0) {
+            if (Input.GetKeyDown(skill.key) && !coolDonwKey.Contains(skill.key) && GM_level.Gm.GetFoodCount(i)>0) {
                 //shoot
                 GameObject pre = MonoBehaviour.Instantiate(skill.pref) as GameObject;
                 pre.transform.position = playerCam.transform.position;
@@ -157,7 +158,7 @@ public class PlayerControl : MonoBehaviour
                     slingAni.Play("shot");
                 }
                 slingShotCoro = StartCoroutine(SlingShotAni());
-                status.skill[i].count--;
+                GM_level.Gm.ReduceFoodCount(i);
             }
         }
     }
@@ -217,6 +218,7 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         status.init(5, playerKey.SkillKey);
+        ChangeSkillSet(SceneManager.GetActiveScene().name);
     }
 
     void FixedUpdate()

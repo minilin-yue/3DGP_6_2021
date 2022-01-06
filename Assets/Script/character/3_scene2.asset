@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8706d663172f1c24b93d28dcef79a8ce, type: 3}
+  m_Name: 3_scene2
+  m_EditorClassIdentifier: 
+  key: 51
+  pref: {fileID: 3691429160523131209, guid: 3bad0d0b0a86a544eb94e58730952e58, type: 3}
+  atk: 0
+  coolDownTime: 10
+  InitSpeed: 30
+  destoryTime: 1
+  hitEffect: {fileID: 1500378020736912, guid: 2547a66872ebe45408ace228820a79e1, type: 3}
+  Icon: {fileID: -1011708559242261581, guid: d48de04876712d244be58795d27baafb, type: 3}
+  initCount: 20

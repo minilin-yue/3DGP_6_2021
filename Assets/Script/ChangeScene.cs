@@ -23,6 +23,9 @@ public class ChangeScene : MonoBehaviour
     {
         //audioManager.Stop();
         if(other.gameObject.tag == "Player")
-        loading.loadScene(sceneName);
+        {
+            //PlayerControl.cPlayer.ChangeSkillSet(sceneName);
+            loading.loadScene(sceneName);
+        }
     }
 }

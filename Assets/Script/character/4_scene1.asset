@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 4_scene1
   m_EditorClassIdentifier: 
   key: 52
-  pref: {fileID: 1906187227490682448, guid: 9a3f4c7c4f830144894c6a4b69f6f755, type: 3}
+  pref: {fileID: 8643340153054220874, guid: f837d4127a6745b4a9bbc9e5da88720d, type: 3}
   atk: 0
   coolDownTime: 5
   InitSpeed: 30

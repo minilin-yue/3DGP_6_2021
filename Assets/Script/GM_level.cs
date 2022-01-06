@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GM_level : MonoBehaviour
 {
+    public static GM_level Gm; 
+
     public enum Chapter
     {
         unStart,
@@ -65,6 +68,8 @@ public class GM_level : MonoBehaviour
     // Init
     void Awake()
     {
+        Gm = this;
+
         windowRect = new Rect(
             (Screen.width - windowWidth) / 2,
             (Screen.height - windowHight) / 2,
@@ -223,4 +228,44 @@ public class GM_level : MonoBehaviour
         caption.Play(0);
         story = false;
     }
+
+    public int GetFoodCount(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return pfood1;
+            case 1:
+                return pfood2;
+            case 2:
+                return pfood3;
+            case 3:
+                return pfood4;
+            default:
+                break;
+        }
+        return 0;
+    }
+
+    public void ReduceFoodCount(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                pfood1--;
+                break;
+            case 1:
+                pfood2--;
+                break;
+            case 2:
+                pfood3--;
+                break;
+            case 3:
+                pfood4--;
+                break;
+            default:
+                break;
+        }
+    }
+
 }
