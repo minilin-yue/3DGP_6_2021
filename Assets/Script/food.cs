@@ -13,9 +13,12 @@ public class food : MonoBehaviour
     public int num = 1;
     public bool trigger = false;
     public bool pick = false;
+    private Voice voice;
+
     // Start is called before the first frame update
     void Start()
     {
+        voice = gameObject.GetComponent<Voice>();
         GameManager = GameObject.Find("GameManager").GetComponent<GM_level>();
         if (food1)
         {
@@ -40,10 +43,11 @@ public class food : MonoBehaviour
     {
         if(trigger)
         {
+            
             if (Input.GetMouseButtonDown(1))
             {
                 pick = true;
-                Debug.Log("Pressed secondary button.");
+                //Debug.Log("Pressed secondary button.");
             }
         }
         
@@ -82,6 +86,7 @@ public class food : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            voice.Play(0);
             trigger = true;      
         }
     }

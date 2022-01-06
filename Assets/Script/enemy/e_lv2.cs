@@ -10,9 +10,11 @@ public class e_lv2 : MonoBehaviour
     public bool diz = false;
     float counter = 0.5f;
     public bool run = true;
+    private Voice voice;
     // Start is called before the first frame update
     void Start()
     {
+        voice = gameObject.GetComponent<Voice>();
         hit = false;
         timer = counter;
     }
@@ -29,6 +31,7 @@ public class e_lv2 : MonoBehaviour
         {
             animator.SetBool("walk", false);
             animator.SetBool("diz", true);
+            voice.Play(1);
             timer = 0;
             diz = false;
             run = false;
@@ -39,6 +42,7 @@ public class e_lv2 : MonoBehaviour
         {
             animator.SetBool("walk", false);
             animator.SetBool("hit", true);
+            voice.Play(0);
             timer = 0;
             hit = false;
             counter = 0.5f;

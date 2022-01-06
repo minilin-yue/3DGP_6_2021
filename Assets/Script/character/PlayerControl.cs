@@ -48,6 +48,7 @@ public class PlayerControl : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 3.0f;
     public LayerMask groundMask;
+    private Voice voice;
 
     Vector3 velocity;
     bool isGrounded {
@@ -169,6 +170,7 @@ public class PlayerControl : MonoBehaviour
             pre.transform.position = playerCam.transform.position;
             pre.GetComponent<Rigidbody>().velocity = N_atk.InitSpeed * playerCam.transform.forward;
             pre.GetComponent<FoodInfo>().info = N_atk;
+            voice.Play(0);
             //sling shot animator
             if (slingShotCoro != null)
             {
@@ -219,6 +221,7 @@ public class PlayerControl : MonoBehaviour
     {
         status.init(5, playerKey.SkillKey);
         ChangeSkillSet(SceneManager.GetActiveScene().name);
+        voice = gameObject.GetComponent<Voice>();
     }
 
     void FixedUpdate()

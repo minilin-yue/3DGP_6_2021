@@ -63,7 +63,7 @@ public class GM_level : MonoBehaviour
     int windowSwitch = 0;
     float alpha = 0;
     bool Quit = false;
-    
+    private Voice voice;
 
     // Init
     void Awake()
@@ -89,7 +89,7 @@ public class GM_level : MonoBehaviour
         }*/
 
         cngPortal = portal_0.transform.GetChild(3).GetComponent<ChangeScene>();
-
+        voice = gameObject.GetComponent<Voice>();
     }
 
     // Update is called once per frame
@@ -141,12 +141,15 @@ public class GM_level : MonoBehaviour
             if (!isPlaying)
             {
                 story = true;
-                
+                isPlaying = true;
+                caption.Play(1);
+                voice.Play(1);
                 //Invoke("Narrator0", 8);
-               
+
             }
             if (p_point >= min_point)
             {
+                isPlaying = false;
                 isSet = false;
             }
 
@@ -154,6 +157,7 @@ public class GM_level : MonoBehaviour
         
         if (chapter == Chapter.finish)
         {
+            
             if (!isPlaying)
             {
                 story = true;
@@ -226,6 +230,7 @@ public class GM_level : MonoBehaviour
     {
         Debug.Log("Congratulations!!!");
         caption.Play(0);
+        voice.Play(0);
         story = false;
     }
 

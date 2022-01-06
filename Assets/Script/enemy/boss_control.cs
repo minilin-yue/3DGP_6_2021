@@ -14,9 +14,11 @@ public class boss_control : MonoBehaviour
     float timer;
     public bool diz = false;
     float counter = 0.5f;
+    private Voice voice;
     // Start is called before the first frame update
     void Start()
     {
+        voice = gameObject.GetComponent<Voice>();
         rg = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         direction = Random.Range(0, 360);
@@ -40,6 +42,7 @@ public class boss_control : MonoBehaviour
         {
             animator.SetBool("walk", false);
             animator.SetBool("hit", true);
+            voice.Play(0);
             rg.velocity = Vector3.zero;
             timer = 0;
             hit = false;
@@ -48,6 +51,7 @@ public class boss_control : MonoBehaviour
 
         animator.SetBool("hit", false);
         animator.SetBool("walk", true);
+        
         timer = 0.5f;
         if (step == rand)
         {

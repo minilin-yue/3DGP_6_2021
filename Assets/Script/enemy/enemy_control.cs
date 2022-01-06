@@ -17,9 +17,11 @@ public class enemy_control : MonoBehaviour
     float timer;
     public bool diz = false;
     float counter = 0.5f;
+    private Voice voice;
     // Start is called before the first frame update
     void Start()
     {
+        voice = gameObject.GetComponent<Voice>();
         rg = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         direction = Random.Range(0, 360);
@@ -41,6 +43,8 @@ public class enemy_control : MonoBehaviour
         {
             animator.SetBool("walk", false);
             animator.SetBool("diz", true);
+            //voice.Play(0);//dog_roar
+            voice.Play(1);//dizzy
             rg.velocity = Vector3.zero;
             timer = 0;
             diz = false;
@@ -51,6 +55,7 @@ public class enemy_control : MonoBehaviour
         {
             animator.SetBool("walk", false);
             animator.SetBool("hit", true);
+            voice.Play(0);//dog_roar
             rg.velocity = Vector3.zero;
             timer = 0;
             hit = false;

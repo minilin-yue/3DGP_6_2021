@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 2
   m_EditorClassIdentifier: 
   sentence:
-  - type: 2
-    sec: 10
-    str: Congratulations!!!
+  - type: 1
+    sec: 5
+    str: level2
