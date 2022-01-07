@@ -1722,8 +1722,8 @@ GameObject:
   - component: {fileID: 7061342856412078827}
   - component: {fileID: 7061342856412078826}
   - component: {fileID: 9144387135714561371}
-  - component: {fileID: 9144387135714561370}
   - component: {fileID: 9144387135714561373}
+  - component: {fileID: 830344863726214445}
   m_Layer: 0
   m_Name: DogPBR
   m_TagString: Untagged
@@ -1783,19 +1783,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &9144387135714561370
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7061342856412078830}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.91620827, y: 1.4143496, z: 0.85887146}
-  m_Center: {x: -0.041895866, y: 0.7065511, z: -0.012580872}
 --- !u!114 &9144387135714561373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1813,6 +1800,21 @@ MonoBehaviour:
   speed: 25
   hit: 0
   player: {fileID: 0}
+  diz: 0
+--- !u!136 &830344863726214445
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061342856412078830}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4113121
+  m_Height: 1.3975635
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7186723, z: -0.0030555725}
 --- !u!1 &7061342856421710719
 GameObject:
   m_ObjectHideFlags: 0

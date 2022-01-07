@@ -32,7 +32,7 @@ public class enemy_control : MonoBehaviour
     }
     // Update is called once per frame
     
-    void Update()
+    void FixedUpdate()
     {
         if (timer < counter)
         {
@@ -74,7 +74,7 @@ public class enemy_control : MonoBehaviour
             else
                 animator.SetBool("attack", false);
             this.transform.LookAt(new Vector3(player.position.x,this.transform.position.y, player.position.z));
-            rg.velocity = (this.transform.forward +Vector3.down) * speed * Time.deltaTime ;
+            rg.velocity = (this.transform.forward) * speed  + Vector3.down*3;
             return;
         }
         animator.SetBool("attack", false);
@@ -85,7 +85,7 @@ public class enemy_control : MonoBehaviour
             step = 0;
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
-        rg.velocity = (this.transform.forward + Vector3.down) * speed * Time.deltaTime;
+        rg.velocity = (this.transform.forward) * speed  + Vector3.down*3;
         //Debug.Log(rg.velocity);
     }
 }

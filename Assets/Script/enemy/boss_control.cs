@@ -26,16 +26,27 @@ public class boss_control : MonoBehaviour
         speed = 20;
         step = 0;
         hit = false;
-        timer = 0.5f;
+        timer = counter;
     }
     // Update is called once per frame
 
     void Update()
     {
         Vector3 velocity = Vector3.zero;
-        if (timer < 0.5f)
+        if (timer < counter)
         {
             timer += Time.deltaTime;
+            return;
+        }
+        if (diz)
+        {
+            animator.SetBool("walk", false);
+            animator.SetBool("diz", true);
+            voice.Play(0);
+            rg.velocity = Vector3.zero;
+            timer = 0;
+            diz = false;
+            counter = 5;
             return;
         }
         if (hit)
@@ -46,13 +57,14 @@ public class boss_control : MonoBehaviour
             rg.velocity = Vector3.zero;
             timer = 0;
             hit = false;
+            counter = 0.5f;
             return;
         }
 
         animator.SetBool("hit", false);
         animator.SetBool("walk", true);
-        
-        timer = 0.5f;
+        animator.SetBool("diz", false);
+        timer = counter;
         if (step == rand)
         {
             direction = Random.Range(0, 360);

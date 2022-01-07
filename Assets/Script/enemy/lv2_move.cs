@@ -26,7 +26,7 @@ public class lv2_move : MonoBehaviour
     }
     // Update is called once per frame
 
-    void Update()
+    void FixedUpdate()
     {
         if (!e_Lv2.run)
         {
@@ -37,8 +37,11 @@ public class lv2_move : MonoBehaviour
         timer = 0.6f;
         if (Vector3.Distance(player.position, this.transform.position) < Distance)
         {
-            this.transform.LookAt(new Vector3(transform.position.x + transform.position.x - player.position.x, this.transform.position.y, transform.position.z + transform.position.x - player.position.z));
-            rg.velocity = (this.transform.forward + Vector3.down) * speed ;
+            Debug.Log("<");
+            //this.transform.LookAt(player.position);
+            Vector3 dir = (transform.position - player.position).normalized;
+            this.transform.LookAt(new Vector3(transform.position.x + dir.x, this.transform.position.y, transform.position.z + dir.z));
+            rg.velocity = (this.transform.forward) * speed -this.transform.up ;
             return;
         }
         if (step == rand)
@@ -48,7 +51,6 @@ public class lv2_move : MonoBehaviour
             step = 0;
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
-        rg.velocity = (this.transform.forward + Vector3.down) * speed;
-        Debug.Log(rg.velocity);
+        rg.velocity = (this.transform.forward) * speed - this.transform.up ;
     }
 }
