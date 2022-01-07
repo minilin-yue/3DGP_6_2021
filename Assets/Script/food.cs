@@ -14,11 +14,13 @@ public class food : MonoBehaviour
     public bool trigger = false;
     public bool pick = false;
     private Voice voice;
-
+    private GameObject mparticle;
     // Start is called before the first frame update
     void Start()
     {
         voice = gameObject.GetComponent<Voice>();
+        mparticle = gameObject.transform.GetChild(0).gameObject;//particle
+        mparticle.SetActive(false);
         GameManager = GameObject.Find("GameManager").GetComponent<GM_level>();
         if (food1)
         {
@@ -86,6 +88,7 @@ public class food : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            mparticle.SetActive(true);
             voice.Play(0);
             trigger = true;      
         }
@@ -94,6 +97,7 @@ public class food : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            mparticle.SetActive(false);
             trigger = false;
         }
     }
