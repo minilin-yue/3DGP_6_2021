@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class pizza_spwan : MonoBehaviour
 {
-    public bool sp = false;
-    public GameObject pizza;
-    public Transform target;
     // Start is called before the first frame update
+    public bool spwan = false;
+    public GameObject pizza;
+    public GameObject target;
     void Start()
     {
         
@@ -16,12 +16,11 @@ public class pizza_spwan : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        this.transform.position = target.position;
-        if (sp)
+        if (spwan)
         {
-            GameObject fall = Instantiate(pizza, this.transform);
-            fall.transform.position = fall.transform.position + Vector3.up * 5;
-            sp = false;
+            spwan = false;
+            GameObject piz = Instantiate(pizza, this.transform);
+            piz.transform.position = new Vector3(target.transform.position.x, 0.1f, target.transform.position.z);
         }
     }
 }

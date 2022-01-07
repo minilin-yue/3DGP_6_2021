@@ -86,6 +86,7 @@ public class enemy_control : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
         rg.velocity = (this.transform.forward) * speed  + Vector3.down*3;
+        step++;
         //Debug.Log(rg.velocity);
     }
 }

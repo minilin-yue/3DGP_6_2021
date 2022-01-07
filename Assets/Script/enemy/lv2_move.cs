@@ -52,5 +52,6 @@ public class lv2_move : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
         rg.velocity = (this.transform.forward) * speed - this.transform.up ;
+        step++;
     }
 }

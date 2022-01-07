@@ -8,7 +8,7 @@ public class boss_control : MonoBehaviour
     public int rand;
     Rigidbody rg;
     public float speed;
-    int step;
+    public int step;
     float direction;
     public bool hit;
     float timer;
@@ -23,14 +23,13 @@ public class boss_control : MonoBehaviour
         animator = GetComponent<Animator>();
         direction = Random.Range(0, 360);
         rand = Random.Range(70, 100);
-        speed = 20;
         step = 0;
         hit = false;
         timer = counter;
     }
     // Update is called once per frame
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 velocity = Vector3.zero;
         if (timer < counter)
@@ -72,6 +71,7 @@ public class boss_control : MonoBehaviour
             step = 0;
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
-        rg.velocity = (this.transform.forward+Vector3.down) * speed;
+        rg.velocity = (this.transform.forward) * speed + Vector3.down;
+        step++;
     }
 }

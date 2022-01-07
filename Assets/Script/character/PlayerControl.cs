@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour
     /// we can use this to access current plauer
     /// </summary>
     public static PlayerControl cPlayer;
+    bool fire = false;
 
     private void Awake()
     {
@@ -165,7 +166,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     private void NormalAtk() {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) ){
             GameObject pre = MonoBehaviour.Instantiate(N_atk.pref) as GameObject;
             pre.transform.position = playerCam.transform.position;
             pre.GetComponent<Rigidbody>().velocity = N_atk.InitSpeed * playerCam.transform.forward;
