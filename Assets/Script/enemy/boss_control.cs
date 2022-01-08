@@ -15,6 +15,7 @@ public class boss_control : MonoBehaviour
     public bool diz = false;
     float counter = 0.5f;
     private Voice voice;
+    public bool fly;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,7 +72,11 @@ public class boss_control : MonoBehaviour
             step = 0;
         }
         transform.rotation = Quaternion.Euler(0, direction, 0);
-        rg.velocity = (this.transform.forward) * speed + Vector3.down;
+        if (!fly)
+            rg.velocity = (this.transform.forward) * speed + Vector3.down;
+        else
+            rg.velocity = (this.transform.forward) * speed + Random.Range(-0.5f,0.5f)*Vector3.down;
         step++;
+        Debug.Log(rg.velocity.y);
     }
 }
