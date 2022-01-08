@@ -54,6 +54,13 @@ public class PlayerControl : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 3.0f;
     public LayerMask groundMask;
+
+    [Header("技能是補血的話打勾")]
+    public bool heal1 = false;
+    public bool heal2 = false;
+    public bool heal3 = false;
+    public bool heal4 = false;
+
     private Voice voice;
 
     Vector3 velocity;
@@ -155,7 +162,7 @@ public class PlayerControl : MonoBehaviour
                 pre.transform.position = playerCam.transform.position;
                 pre.GetComponent<Rigidbody>().velocity = skill.InitSpeed * playerCam.transform.forward;
                 pre.GetComponent<FoodInfo>().info = skill;
-                voice.Play(0);
+                voice.Play(1);
                 //cool down
                 StartCoroutine(coolDown(skill.key, skill.coolDownTime));
                 StartCoroutine(status.CoolDownSkill(GetSkillIndex(skill), skill.coolDownTime));
@@ -234,6 +241,7 @@ public class PlayerControl : MonoBehaviour
         CanBeHit = false;
         PlayerUi.currentUi.HitEffect();
         status.Hp = Mathf.Clamp(status.Hp - 1, 0, 5);
+        voice.Play(2);
         yield return new WaitForSeconds(0.6f);
         CanBeHit = true;
         yield return null;

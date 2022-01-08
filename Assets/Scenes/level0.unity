@@ -4031,6 +4031,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a12b8a24900019244a27f3b9add2d59e, type: 2}
+    - target: {fileID: 3954110616871730606, guid: 2dfaecf3632715f46b0513820aa77073,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a12b8a24900019244a27f3b9add2d59e, type: 2}
     - target: {fileID: 4005302907516144419, guid: 2dfaecf3632715f46b0513820aa77073,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -17289,6 +17294,8 @@ MonoBehaviour:
   list:
   - {fileID: 8300000, guid: 6465df39b0f285243bccc8fc31455449, type: 3}
   - {fileID: 8300000, guid: ffa09a7cce32db54c9049ceeda32c664, type: 3}
+  - {fileID: 8300000, guid: 5a0c85646601b7e4991b2e9ace307c00, type: 3}
+  - {fileID: 8300000, guid: 6ddf90a090bc71543b384c5fb6d71f94, type: 3}
   isPlaying: 0
 --- !u!82 &1945639681
 AudioSource:

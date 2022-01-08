@@ -11000,6 +11000,8 @@ MonoBehaviour:
   list:
   - {fileID: 8300000, guid: 6465df39b0f285243bccc8fc31455449, type: 3}
   - {fileID: 8300000, guid: ffa09a7cce32db54c9049ceeda32c664, type: 3}
+  - {fileID: 8300000, guid: 5a0c85646601b7e4991b2e9ace307c00, type: 3}
+  - {fileID: 8300000, guid: 6ddf90a090bc71543b384c5fb6d71f94, type: 3}
   isPlaying: 0
 --- !u!82 &1426778184
 AudioSource:
