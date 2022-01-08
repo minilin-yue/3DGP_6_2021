@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 0_normalAtk
   m_EditorClassIdentifier: 
   key: 58
-  pref: {fileID: 44259601237363450, guid: 7627a8e744b51b6439b5744067b3b7c2, type: 3}
+  pref: {fileID: 4419581087550455078, guid: 0264cf14f4d938b43b168f04c5e8a860, type: 3}
   atk: 0
   coolDownTime: 0
   InitSpeed: 30

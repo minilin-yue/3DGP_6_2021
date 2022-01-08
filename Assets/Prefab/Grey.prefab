@@ -2321,7 +2321,7 @@ GameObject:
   - component: {fileID: 5379378997168545787}
   m_Layer: 0
   m_Name: damage_region
-  m_TagString: Untagged
+  m_TagString: enemy_weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -36,7 +36,12 @@ public class PlayerControl : MonoBehaviour
     private FoodSkill N_atk;
     //[Header("血量")]
     //public float blood = 5;
+    [Header("敵人攻擊的Tag")]
+    public string Enemy_Atk_tag = "enemy_weapon";
+    private bool CanBeHit = true;
 
+    [Header("HP歸零 的 暈眩時間")]
+    public float DizTime = 3f;
     [Header("放入在各關卡可使用的技能設定")]
     public SceneFoodTable SceneFoodSetting;
 
@@ -150,9 +155,11 @@ public class PlayerControl : MonoBehaviour
                 pre.transform.position = playerCam.transform.position;
                 pre.GetComponent<Rigidbody>().velocity = skill.InitSpeed * playerCam.transform.forward;
                 pre.GetComponent<FoodInfo>().info = skill;
+                voice.Play(0);
                 //cool down
                 StartCoroutine(coolDown(skill.key, skill.coolDownTime));
                 StartCoroutine(status.CoolDownSkill(GetSkillIndex(skill), skill.coolDownTime));
+                
                 //sling shot animator
                 if (slingShotCoro != null) { 
                     StopCoroutine(slingShotCoro);
@@ -165,23 +172,23 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void NormalAtk() {
-        if (Input.GetMouseButtonDown(0) ){
-            GameObject pre = MonoBehaviour.Instantiate(N_atk.pref) as GameObject;
-            pre.transform.position = playerCam.transform.position;
-            pre.GetComponent<Rigidbody>().velocity = N_atk.InitSpeed * playerCam.transform.forward;
-            pre.GetComponent<FoodInfo>().info = N_atk;
-            voice.Play(0);
-            //sling shot animator
-            if (slingShotCoro != null)
-            {
-                StopCoroutine(slingShotCoro);
-                slingAni.SetBool("shoot", false);
-                slingAni.Play("shot");
-            }
-            slingShotCoro = StartCoroutine(SlingShotAni());
+    private IEnumerator NormalAtk() {
+        yield return new WaitUntil(() => (Input.GetMouseButtonDown(0) && status.canMove));
+        GameObject pre = MonoBehaviour.Instantiate(N_atk.pref) as GameObject;
+        pre.transform.position = playerCam.transform.position;
+        pre.GetComponent<Rigidbody>().velocity = N_atk.InitSpeed * playerCam.transform.forward;
+        pre.GetComponent<FoodInfo>().info = N_atk;
+        voice.Play(0);
+        //sling shot animator
+        if (slingShotCoro != null)
+        {
+            StopCoroutine(slingShotCoro);
+            slingAni.SetBool("shoot", false);
+            slingAni.Play("shot");
         }
-    
+        slingShotCoro = StartCoroutine(SlingShotAni());
+        yield return new WaitForSeconds(0.2f);
+        StartCoroutine(NormalAtk());
     }
 
     private int GetSkillIndex(FoodSkill skill) { 
@@ -218,18 +225,69 @@ public class PlayerControl : MonoBehaviour
 
     #endregion
 
+    #region Receive_damage
+    /// <summary>
+    /// 接觸到傷害後call這個
+    /// </summary>
+    public IEnumerator GiveDamage(Collider other)
+    {
+        CanBeHit = false;
+        PlayerUi.currentUi.HitEffect();
+        status.Hp = Mathf.Clamp(status.Hp - 1, 0, 5);
+        yield return new WaitForSeconds(0.6f);
+        CanBeHit = true;
+        yield return null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(Enemy_Atk_tag) && CanBeHit && status.canMove) {
+            StartCoroutine(GiveDamage(other));
+        }
+        
+    }
+
+    #endregion
+
+    #region Hp == Zero
+
+    /// <summary>
+    /// HP歸零時的暈眩處理
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator Diz()
+    {
+        yield return new WaitUntil(() => status.Hp <= 0);
+        PlayerUi.currentUi.DizEffect();
+        status.canMove = false;
+        yield return new WaitForSeconds(DizTime);
+        status.canMove = true;
+        status.Hp = 5;
+        StartCoroutine(Diz());
+        yield return null;
+
+    }
+
+
+    #endregion
+
     private void Start()
     {
         status.init(5, playerKey.SkillKey);
         ChangeSkillSet(SceneManager.GetActiveScene().name);
         voice = gameObject.GetComponent<Voice>();
+        StartCoroutine(NormalAtk());
+        StartCoroutine(Diz());
     }
 
     void FixedUpdate()
     {
-        Movement();
-        SkillInput();
-        NormalAtk();
+        if (status.canMove)
+        {
+            Movement();
+            SkillInput();
+        }
+        //NormalAtk();
     }
 }
 

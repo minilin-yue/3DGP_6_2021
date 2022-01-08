@@ -5,8 +5,12 @@ using UnityEngine;
 public class PlayerUi : MonoBehaviour
 {
     // Start is called before the first frame update
+    public static PlayerUi currentUi;
     public PlayerControl Player;
     public int Hp;
+
+    [SerializeField]
+    private Animator HitAni;
 
     [Header("血量物件，在prefab中設定好")]
     public GameObject[] bloods;
@@ -14,6 +18,7 @@ public class PlayerUi : MonoBehaviour
     public Ui[] ui;
     void Start()
     {
+        currentUi = this;
         Player = PlayerControl.cPlayer;
         StartCoroutine(getPlayerInit());
     }
@@ -23,6 +28,20 @@ public class PlayerUi : MonoBehaviour
         Hp = Player.status.Hp;
         setFoodInfo();
         yield return null;
+    }
+
+    /// <summary>
+    /// player被打的時候call這個
+    /// </summary>
+    public void HitEffect()
+    {
+        HitAni.Play("Hit",0,0);
+        
+    }
+
+    public void DizEffect()
+    {
+        HitAni.Play("Diz", 0, 0);
     }
 
 
