@@ -42,7 +42,7 @@ public class boss_control : MonoBehaviour
         {
             animator.SetBool("walk", false);
             animator.SetBool("diz", true);
-            voice.Play(0);
+            voice.Play(1);
             rg.velocity = Vector3.zero;
             timer = 0;
             diz = false;

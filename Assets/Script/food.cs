@@ -61,6 +61,8 @@ public class food : MonoBehaviour
             }
 
             pick = false;
+            mparticle.SetActive(false);
+            trigger = false;
             gameObject.transform.parent.gameObject.SetActive(false);
             if (food1)
             {

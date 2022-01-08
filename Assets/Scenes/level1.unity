@@ -4775,10 +4775,10 @@ MonoBehaviour:
   sfood2: 0
   sfood3: 0
   sfood4: 0
-  pfood1: 5
-  pfood2: 5
-  pfood3: 5
-  pfood4: 5
+  pfood1: 0
+  pfood2: 0
+  pfood3: 0
+  pfood4: 0
   point1: 10
   point2: 5
   point3: 100
@@ -18346,7 +18346,7 @@ PrefabInstance:
     - target: {fileID: 9062021423687573844, guid: 410c8af925588104696fa3927d8254af,
         type: 3}
       propertyPath: food2
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 410c8af925588104696fa3927d8254af, type: 3}

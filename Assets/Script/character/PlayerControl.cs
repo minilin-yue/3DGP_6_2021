@@ -55,11 +55,7 @@ public class PlayerControl : MonoBehaviour
     public float groundDistance = 3.0f;
     public LayerMask groundMask;
 
-    [Header("技能是補血的話打勾")]
-    public bool heal1 = false;
-    public bool heal2 = false;
-    public bool heal3 = false;
-    public bool heal4 = false;
+
 
     private Voice voice;
 
