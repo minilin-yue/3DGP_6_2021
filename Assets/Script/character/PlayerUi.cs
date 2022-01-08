@@ -49,6 +49,11 @@ public class PlayerUi : MonoBehaviour
         HitAni.Play("Recovery", 0, 0);
     }
 
+    public void NoEffect()
+    {
+        HitAni.Play("no", 0, 0);
+    }
+
     /// <summary>
     /// 在改動技能列表的時候要call一次
     /// </summary>
@@ -83,7 +88,6 @@ public class PlayerUi : MonoBehaviour
         {
             ui[i].count.text = Player.status.skill[i].count.ToString();
         }
-
     }
 
     // Update is called once per frame

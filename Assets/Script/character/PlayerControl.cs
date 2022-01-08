@@ -40,6 +40,9 @@ public class PlayerControl : MonoBehaviour
     public string Enemy_Atk_tag = "enemy_weapon";
     private bool CanBeHit = true;
 
+    [Header("用於蘋果轉換")]
+    public FoodSkill Apple;
+
     [Header("HP歸零 的 暈眩時間")]
     public float DizTime = 3f;
     [Header("放入在各關卡可使用的技能設定")]
@@ -161,9 +164,16 @@ public class PlayerControl : MonoBehaviour
                 {
                     status.Hp = Mathf.Clamp(status.Hp + skill.atk, 0, 5);
                     PlayerUi.currentUi.RecoveryEffect();
+                    voice.Play(3);
                     //cool down
                     StartCoroutine(coolDown(skill.key, skill.coolDownTime));
                     StartCoroutine(status.CoolDownSkill(GetSkillIndex(skill), skill.coolDownTime));
+                    GM_level.Gm.ReduceFoodCount(i);
+                    //special
+                    if(skill == Apple)
+                    {
+                        GM_level.Gm.AddFoodCount(3);
+                    }
                     return;
                 }
 
@@ -279,6 +289,7 @@ public class PlayerControl : MonoBehaviour
         PlayerUi.currentUi.DizEffect();
         status.canMove = false;
         yield return new WaitForSeconds(DizTime);
+        PlayerUi.currentUi.NoEffect();
         status.canMove = true;
         status.Hp = 5;
         StartCoroutine(Diz());

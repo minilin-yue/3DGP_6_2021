@@ -75,6 +75,9 @@ MonoBehaviour:
   slingAni: {fileID: 439670224277250}
   shotAniLen: 0.63
   N_atk: {fileID: 11400000, guid: 084c3c7a6eba648478d7e550e36492e9, type: 2}
+  Enemy_Atk_tag: enemy_weapon
+  Apple: {fileID: 11400000, guid: ecc4247cc31249e448fbf465f1cd45f2, type: 2}
+  DizTime: 3
   SceneFoodSetting: {fileID: 11400000, guid: 3eded6471d918e547b4f586b5891252f, type: 2}
   speed: 5
   gravity: -9.18

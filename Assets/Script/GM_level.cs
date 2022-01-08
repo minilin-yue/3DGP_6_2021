@@ -273,4 +273,25 @@ public class GM_level : MonoBehaviour
         }
     }
 
+    public void AddFoodCount(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                pfood1++;
+                break;
+            case 1:
+                pfood2++;
+                break;
+            case 2:
+                pfood3++;
+                break;
+            case 3:
+                pfood4++;
+                break;
+            default:
+                break;
+        }
+    }
+
 }
