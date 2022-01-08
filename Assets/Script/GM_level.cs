@@ -126,6 +126,15 @@ public class GM_level : MonoBehaviour
         {
             cngPortal.sceneName = "level0";
             isSet = true;
+            if (!isPlaying)
+            {
+                story = true;
+                isPlaying = true;
+                caption.Play(1);
+                voice.Play(1);
+                //Invoke("Narrator0", 8);
+
+            }
             chapter = Chapter.level;
         }
 
@@ -138,15 +147,7 @@ public class GM_level : MonoBehaviour
 
         if (chapter == Chapter.level)
         {
-            if (!isPlaying)
-            {
-                story = true;
-                isPlaying = true;
-                caption.Play(1);
-                voice.Play(1);
-                //Invoke("Narrator0", 8);
-
-            }
+            
             if (p_point >= min_point)
             {
                 isPlaying = false;
@@ -157,17 +158,27 @@ public class GM_level : MonoBehaviour
         
         if (chapter == Chapter.finish)
         {
+
+            if (p_point < min_point)
+            {
+                caption.Play(2);
+                chapter = Chapter.level;
+                portal_0.SetActive(false);
+            }
+            else
+            {
+                if (!isPlaying)
+                {
+                    story = true;
+                    Narrator0();
+                    isPlaying = true;
+                }
+                else if (!story && !caption.isPlaying)
+                {
+                    portal_0.SetActive(true);
+                }
+            }
             
-            if (!isPlaying)
-            {
-                story = true;
-                Narrator0();
-                isPlaying = true;
-            }
-            else if (!story && !caption.isPlaying)
-            {
-                portal_0.SetActive(true);
-            }
         }
 
     }
