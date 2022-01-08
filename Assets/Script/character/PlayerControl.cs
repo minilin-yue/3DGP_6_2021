@@ -151,12 +151,26 @@ public class PlayerControl : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 技能的實際處理
+    /// </summary>
     private void SkillInput() {
         //foreach (FoodSkill skill in playerKey.SkillKey) {
         for (int i= 0;i < playerKey.SkillKey.Length;i++)
         {
             FoodSkill skill = playerKey.SkillKey[i];
             if (Input.GetKeyDown(skill.key) && !coolDonwKey.Contains(skill.key) && GM_level.Gm.GetFoodCount(i)>0) {
+                //recovery item
+                if (skill.recoveryItem)
+                {
+                    status.Hp = Mathf.Clamp(status.Hp + skill.atk, 0, 5);
+                    PlayerUi.currentUi.RecoveryEffect();
+                    //cool down
+                    StartCoroutine(coolDown(skill.key, skill.coolDownTime));
+                    StartCoroutine(status.CoolDownSkill(GetSkillIndex(skill), skill.coolDownTime));
+                    return;
+                }
+
                 //shoot
                 GameObject pre = MonoBehaviour.Instantiate(skill.pref) as GameObject;
                 pre.transform.position = playerCam.transform.position;

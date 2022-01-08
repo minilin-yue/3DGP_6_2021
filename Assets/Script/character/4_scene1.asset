@@ -15,9 +15,10 @@ MonoBehaviour:
   key: 52
   pref: {fileID: 8643340153054220874, guid: f837d4127a6745b4a9bbc9e5da88720d, type: 3}
   atk: 0
-  coolDownTime: 5
+  coolDownTime: 0.5
   InitSpeed: 30
   destoryTime: 1
   hitEffect: {fileID: 1500378020736912, guid: 2547a66872ebe45408ace228820a79e1, type: 3}
   Icon: {fileID: -6675031877438946862, guid: e7e8b5e7c3f4bb6469babacea9bcec90, type: 3}
   initCount: 20
+  recoveryItem: 0

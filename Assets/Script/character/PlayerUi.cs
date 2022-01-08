@@ -44,6 +44,10 @@ public class PlayerUi : MonoBehaviour
         HitAni.Play("Diz", 0, 0);
     }
 
+    public void RecoveryEffect()
+    {
+        HitAni.Play("Recovery", 0, 0);
+    }
 
     /// <summary>
     /// 在改動技能列表的時候要call一次

@@ -15,5 +15,6 @@ public class FoodSkill : ScriptableObject
     public GameObject hitEffect;
     public Sprite Icon;
     public int initCount;
+    public bool recoveryItem = false;
     //待補...
 }

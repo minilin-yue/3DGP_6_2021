@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 51
   pref: {fileID: 2967177434501190365, guid: 444957210e45ed644b33bccbe43cbf97, type: 3}
-  atk: 0
-  coolDownTime: 10
+  atk: 4
+  coolDownTime: 0.5
   InitSpeed: 30
   destoryTime: 1
   hitEffect: {fileID: 1500378020736912, guid: 2547a66872ebe45408ace228820a79e1, type: 3}
   Icon: {fileID: 3961772505279377526, guid: d48de04876712d244be58795d27baafb, type: 3}
   initCount: 20
+  recoveryItem: 1
