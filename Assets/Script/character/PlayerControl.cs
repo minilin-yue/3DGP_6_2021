@@ -287,6 +287,7 @@ public class PlayerControl : MonoBehaviour
     {
         yield return new WaitUntil(() => status.Hp <= 0);
         PlayerUi.currentUi.DizEffect();
+        voice.Play(4);
         status.canMove = false;
         yield return new WaitForSeconds(DizTime);
         PlayerUi.currentUi.NoEffect();
