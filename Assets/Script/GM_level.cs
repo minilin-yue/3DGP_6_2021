@@ -93,88 +93,41 @@ public class GM_level : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        p_point = pfood1 * point1 + pfood2 * point2 + pfood3 * point3 + pfood4 * point4;
-
-        txt_point1.text = "♨" + point1.ToString();
-        txt_point2.text = "♨" + point2.ToString();
-        txt_point3.text = "♨" + point3.ToString();
-        txt_point4.text = "♨" + point4.ToString();
-
-        if (pfood1 < 100) txt_num1.text = pfood1.ToString();
-        else txt_num1.text = "99+";
-
-        if (pfood2 < 100) txt_num2.text = pfood2.ToString();
-        else txt_num2.text = "99+";
-
-        if (pfood3 < 100) txt_num3.text = pfood3.ToString();
-        else txt_num3.text = "99+";
-
-        if (pfood4 < 100) txt_num4.text = pfood4.ToString();
-        else txt_num4.text = "99+";
-
-        if (p_point < 10000) mission.text = "通關條件：♨" + min_point.ToString() + "\n目前積分：♨" + p_point.ToString();
-        else mission.text = "通關條件：♨" + min_point.ToString() + "\n目前積分：♨9999+";
-
-        if (Input.GetKeyDown("escape"))
-        {
-            windowSwitch = 1;
-            alpha = 0; // Init Window Alpha Color
-        }
-        if (!isSet && chapter == Chapter.unStart)
-        {
+    void Update(){
+        Foodtxt();
+        Key_escape();
+        if (!isSet && chapter == Chapter.unStart){
             cngPortal.sceneName = "level0";
             isSet = true;
-            if (!isPlaying)
-            {
+            if (!isPlaying){
                 story = true;
                 isPlaying = true;
                 caption.Play(1);
                 voice.Play(1);
-                //Invoke("Narrator0", 8);
-
             }
             chapter = Chapter.level;
         }
-
-        if (!isSet && chapter == Chapter.level)
-        {
+        if (!isSet && chapter == Chapter.level){
             isSet = true;
             chapter = Chapter.finish;
         }
-
-
-        if (chapter == Chapter.level)
-        {
-            
-            if (p_point >= min_point)
-            {
+        if (chapter == Chapter.level){
+            if (p_point >= min_point){
                 isPlaying = false;
                 isSet = false;
             }
-
         }
-        
-        if (chapter == Chapter.finish)
-        {
-
-            if (p_point < min_point)
-            {
+        if (chapter == Chapter.finish){
+            if (p_point < min_point){
                 caption.Play(2);
                 chapter = Chapter.level;
                 portal_0.SetActive(false);
-            }
-            else
-            {
-                if (!isPlaying)
-                {
+            }else{
+                if (!isPlaying){
                     story = true;
                     Narrator0();
                     isPlaying = true;
-                }
-                else if (!story && !caption.isPlaying)
-                {
+                }else if (!story && !caption.isPlaying){
                     portal_0.SetActive(true);
                 }
             }
@@ -245,6 +198,38 @@ public class GM_level : MonoBehaviour
         story = false;
     }
 
+    void Foodtxt()
+    {
+        p_point = pfood1 * point1 + pfood2 * point2 + pfood3 * point3 + pfood4 * point4;
+
+        txt_point1.text = "♨" + point1.ToString();
+        txt_point2.text = "♨" + point2.ToString();
+        txt_point3.text = "♨" + point3.ToString();
+        txt_point4.text = "♨" + point4.ToString();
+
+        if (pfood1 < 100) txt_num1.text = pfood1.ToString();
+        else txt_num1.text = "99+";
+
+        if (pfood2 < 100) txt_num2.text = pfood2.ToString();
+        else txt_num2.text = "99+";
+
+        if (pfood3 < 100) txt_num3.text = pfood3.ToString();
+        else txt_num3.text = "99+";
+
+        if (pfood4 < 100) txt_num4.text = pfood4.ToString();
+        else txt_num4.text = "99+";
+
+        if (p_point < 10000) mission.text = "通關條件：♨" + min_point.ToString() + "\n目前積分：♨" + p_point.ToString();
+        else mission.text = "通關條件：♨" + min_point.ToString() + "\n目前積分：♨9999+";
+    }
+    void Key_escape()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+            windowSwitch = 1;
+            alpha = 0; // Init Window Alpha Color
+        }
+    }
     public int GetFoodCount(int index)
     {
         switch (index)
