@@ -3001,6 +3001,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8527649343741535382, guid: 6ebdfd41403f8d747aa530049a6fe3d9,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 8527649344971864300, guid: 6ebdfd41403f8d747aa530049a6fe3d9,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -48803,6 +48809,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4401031724648887173, guid: c7e4f5c7cd415404392d5dae66e0677f,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 4845389326153152161, guid: c7e4f5c7cd415404392d5dae66e0677f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62702,6 +62714,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6285195361054275372, guid: 82ee80ead9be0a14c9fb4ffb7dd9099e,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 6914934985449678879, guid: 82ee80ead9be0a14c9fb4ffb7dd9099e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -65763,6 +65781,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6683113108574977209, guid: 506fa73104f63e441ab6000eef050c78,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 506fa73104f63e441ab6000eef050c78, type: 3}
 --- !u!1 &6683152829650869783
